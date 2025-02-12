@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - '80:80'
+      - '443:443'
+  mongo:
+    image: mongo:4.2.5
+  app:
+    build: .
+    environment:
+      SPOTIFY_CLIENT_ID: 'put your client id here'
+      SPOTIFY_SECRET: 'put your secret here'
+      WAIT_HOSTS: mongo:27017
+#    ports:
+#      - '8080:8080'
